@@ -11,25 +11,24 @@ public class Compra extends Operacion {
 
 
     @Override
-    public void generarDocumento(Integer valor, String id){
+    public void generarDocumento(Integer valor, String id) {
         boolean anyServicio = false;
-        for(Item item:articulos){
-            if(item.getTipoDeItem().equals("SERVICIO")){
+        for (Item item : articulos) {
+            if (item.getTipoDeItem().equals("SERVICIO")) {
                 anyServicio = true;
                 break;
             }
 
         }
 
-        if(!anyServicio){
-            this.documento = new Documento(TipoDeDocumento.REMITO, valor,  id);
-        }
-
-        else{
-            this.documento = new Documento(TipoDeDocumento.FALTANTE, valor,  id);
+        if (!anyServicio) {
+            this.documento = new Documento(TipoDeDocumento.REMITO, valor, id);
+        } else {
+            this.documento = new Documento(TipoDeDocumento.FALTANTE, valor, id);
 
 
         }
 
     }
 
+}

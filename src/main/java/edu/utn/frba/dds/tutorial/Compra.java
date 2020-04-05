@@ -11,10 +11,10 @@ public class Compra extends Operacion {
 
 
     @Override
-    public void generarDocumento(Integer valor, String id) {
+    public void generarDocumento(String id) {
         boolean anyServicio = false;
         for (Item item : articulos) {
-            if (item.getTipoDeItem().equals("SERVICIO")) {
+            if (item.getTipoDeItem().equals(TipoDeItem.SERVICIO)) {
                 anyServicio = true;
                 break;
             }
@@ -22,9 +22,9 @@ public class Compra extends Operacion {
         }
 
         if (!anyServicio) {
-            this.documento = new Documento(TipoDeDocumento.REMITO, valor, id);
+            this.documento = new Documento(TipoDeDocumento.REMITO, precio, id);
         } else {
-            this.documento = new Documento(TipoDeDocumento.FALTANTE, valor, id);
+            this.documento = new Documento(TipoDeDocumento.FALTANTE, precio, id);
 
 
         }

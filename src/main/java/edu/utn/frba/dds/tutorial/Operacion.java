@@ -9,15 +9,27 @@ public abstract class Operacion {
 
 
     public List<Item> articulos = new ArrayList<Item>();
+
+    public Documento getDocumento() {
+        return documento;
+    }
+
     public Documento documento;
     public boolean abierto;
-    public Integer precio;
+
+    public long getPrecio() {
+        return precio;
+    }
+
+    public long precio;
 
 
-    public Operacion(Documento documento,List<Item> articulos, boolean abierto, Integer precio) {
+    public Operacion(Documento documento,List<Item> articulos, boolean abierto, long precio) {
         this.documento = documento;
         this.articulos = articulos;
         this.abierto = abierto;
+        this.precio = precio;
+
 
 
     }
@@ -26,26 +38,28 @@ public abstract class Operacion {
 
         articulos.add(item);
 
-        item.agregarOperacion(this);
-
     }
 
 
-    public void calcularValor(){
+    public void calcularValor() throws Exception {
         if(this.abierto){
             precio = 0;
 
             for(Item item:articulos){
-                precio =+ item.getPrecio();
+                precio += item.getPrecio();
             }
         }
-        //ver de tirar una ex
+        else{
+            throw new  cambiarPrecioException("no se puede modificar el precio de una oepración cerrada");
+        }
 
     }
 
 
 
-    public abstract void generarDocumento(Integer valor, String id);
+
+
+    public abstract void generarDocumento( String id);
 
 
 

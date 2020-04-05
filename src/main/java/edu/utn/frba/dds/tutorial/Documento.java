@@ -4,11 +4,15 @@ import java.util.List;
 
 public class Documento {
 
+    public TipoDeDocumento getTipoDeDocumento() {
+        return tipoDeDocumento;
+    }
+
     private TipoDeDocumento tipoDeDocumento;
-    private Integer valor;
+    private long valor;
     private String id;
 
-    public Documento(TipoDeDocumento tipoDeDocumento, Integer valor, String id) {
+    public Documento(TipoDeDocumento tipoDeDocumento, long valor, String id) {
 
         this.tipoDeDocumento = tipoDeDocumento;
         this.valor = valor;

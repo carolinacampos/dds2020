@@ -7,9 +7,12 @@ public class Item {
     private TipoDeItem tipoDeItem;
 
     private Integer precio;
-    private boolean precioModificado;
-    public List<Operacion> operacionesAsociadas = new ArrayList<Operacion>();
 
+    public Item(TipoDeItem tipoDeItem, Integer precio) {
+
+        this.precio = precio;
+        this.tipoDeItem =tipoDeItem;
+    }
 
 
 
@@ -19,15 +22,8 @@ public class Item {
 
     public void modificarPrecio(Integer precio) {
         this.precio = precio;
-        for(Operacion operacion:operacionesAsociadas){
-
-            operacion.calcularValor();
-        }
     }
 
-    public void agregarOperacion(Operacion operacion){
-        operacionesAsociadas.add(operacion);
-    }
 
     public TipoDeItem getTipoDeItem() {
         return tipoDeItem;
